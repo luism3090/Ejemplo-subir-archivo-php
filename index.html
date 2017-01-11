@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Controladores 2</title>
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+
+	<script>
+		
+	$(document).on("ready",inicio);
+	function inicio()
+	{
+		
+		$("#btnSubir").click(function()
+		{
+			
+
+			var file_data = $('#fileSubir').prop('files')[0];   
+		    var form_data = new FormData();                  
+		    form_data.append('file', file_data);
+		    //alert(form_data);   
+
+			$.ajax({
+				url:"subir.php",
+				type: "POST",
+				contentType:false,
+				data:form_data,
+				processData:false,
+				cache:false,            
+				success: function(result) 
+				{ 
+					alert(result);
+					$("#fileSubir").val("");
+				}
+
+       		 });
+
+
+		});
+		
+
+	}
+
+	</script>
+	
+
+</head>
+<body>
+
+	<input type="file" id="fileSubir">
+	<button type="button" id="btnSubir">subir</button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form ng-submit="agregarTarea()">
+			<input type="text" size="30" placeholder="Agregar una nueva tarea" ng-model="textoNuevaTarea">
+			<button class="btn btn-primary" type="submit"> Agregar Tarea </button>
+		</form> -->
